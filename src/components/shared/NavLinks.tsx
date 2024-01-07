@@ -40,7 +40,7 @@ export async function DesktopNavlinks({ session }: Props) {
         </>
       ) : (
         authLinks.map((authlink) => (
-          <Button asChild>
+          <Button key={`authlink_btn-${authlink.name}`} asChild>
             <Link key={`authlink-${authlink.name}`} href={authlink.link}>
               {authlink.name}
             </Link>
@@ -84,7 +84,12 @@ export async function MobileNavlinks({
         </>
       ) : (
         authLinks.map((authlink) => (
-          <Button className={twMerge("m-0 p-0")} variant={"ghost"} asChild>
+          <Button
+            key={`mobile_authlink_btn-${authlink.name}`}
+            className={twMerge("m-0 p-0")}
+            variant={"ghost"}
+            asChild
+          >
             <Link key={`mobile_authlink-${authlink.name}`} href={authlink.link}>
               <authlink.icon className="h-8 w-8" />
             </Link>
