@@ -9,7 +9,7 @@ async function Userslist({ q }: { q: string }) {
     return (
       <div className="m-4">
         <div>
-          <p>Found 0 users</p>
+          <p className="font-medium">Found 0 users</p>
           <div className="separator mb-4 mt-2" />
         </div>
       </div>
@@ -19,7 +19,7 @@ async function Userslist({ q }: { q: string }) {
   return (
     <div className="m-4">
       <div>
-        <p>
+        <p className="font-medium">
           Found {foundUsers?.length} {foundUsers.length > 1 ? "users" : "user"}
         </p>
         <div className="separator mb-4 mt-2" />

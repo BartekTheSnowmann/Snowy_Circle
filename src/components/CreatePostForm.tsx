@@ -42,7 +42,7 @@ export default function CreatePost() {
     <>
       <Form {...form}>
         <form
-          className="min-w-60 max-w-full flex-1 p-4"
+          className="max-w-full flex-1 p-4"
           onSubmit={form.handleSubmit(onSubmit)}
         >
           <div className="relative">
@@ -51,7 +51,9 @@ export default function CreatePost() {
               name="body"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Whats up?</FormLabel>
+                  <FormLabel className="text-muted-foreground">
+                    Whats up?
+                  </FormLabel>
                   <FormControl>
                     <Textarea
                       className="min-h-40 w-full"

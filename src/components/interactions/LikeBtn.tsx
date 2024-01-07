@@ -33,15 +33,15 @@ function LikeBtn({ postId, isLiked, likesAmount }: Props) {
 
   return (
     <Button
-      className="flex items-center gap-2"
+      className="group flex items-center gap-2"
       variant={"outline"}
       onClick={handleLikeClick}
     >
       {likesAmount > 0 && likesAmount}
       {liked ? (
-        <HeartFilledIcon className="h-6 w-6" />
+        <HeartFilledIcon className="h-6 w-6 text-destructive" />
       ) : (
-        <HeartIcon className="h-6 w-6" />
+        <HeartIcon className="h-6 w-6 group-hover:text-destructive" />
       )}
     </Button>
   );

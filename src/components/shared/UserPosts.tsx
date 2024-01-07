@@ -18,7 +18,9 @@ async function UserPosts({ user, canEdit }: Props) {
   }
 
   if (!postsData.posts.length) {
-    return "No posts";
+    return (
+      <p className="text-muted-foreground drop-shadow-md">No posts yet!</p>
+    );
   }
 
   return (

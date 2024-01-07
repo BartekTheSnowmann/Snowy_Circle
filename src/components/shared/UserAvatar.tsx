@@ -16,7 +16,9 @@ const sizes = {
 
 function UserAvatar({ userImage, size }: Props) {
   return (
-    <Avatar className={`${size && sizes[size]} bg-background`}>
+    <Avatar
+      className={`${size && sizes[size]} border-2 bg-background shadow-md`}
+    >
       <AvatarImage
         className="object-contain object-center"
         src={userImage ? userImage : placeholders.profilePicturePlaceholder}

@@ -4,19 +4,24 @@ import Link from "next/link";
 
 function page() {
   return (
-    <section className="p-4">
-      <div className="mb-4">
-        <h1 className="text-3xl font-bold">Login</h1>
-        <p className="text-muted-foreground">Welcome Back!</p>
-        <p>
-          Doesnt have an account?
-          <Link className="ml-1 font-semibold text-primary" href={"/sign-up"}>
-            Sign up
-          </Link>
-        </p>
+    <section className="px-8 py-16">
+      <div className="mx-auto max-w-md">
+        <div className="mb-12">
+          <h1 className="mb-2 text-3xl font-bold">Sign in</h1>
+          <div className="font-medium text-muted-foreground">
+            <p>
+              Doesnt have an account?
+              <Link
+                className="ml-1 font-semibold text-primary"
+                href={"/sign-up"}
+              >
+                Sign up
+              </Link>
+            </p>
+          </div>
+        </div>
+        <SignInForm />
       </div>
-
-      <SignInForm />
     </section>
   );
 }

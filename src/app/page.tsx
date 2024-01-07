@@ -10,7 +10,7 @@ export default function Home({
 }) {
   return (
     <main className="w-full p-4">
-      <div className="mx-auto flex w-fit">
+      <div className="mx-auto my-8 flex w-fit">
         <Button
           disabled={feed === "discover"}
           variant={feed === "discover" ? "default" : "outline"}

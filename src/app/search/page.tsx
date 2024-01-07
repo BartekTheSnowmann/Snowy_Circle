@@ -10,7 +10,7 @@ async function page({ searchParams: { q } }: { searchParams: { q: string } }) {
 
   return (
     <section className="p-4">
-      <h4 className="text-center">
+      <h4 className="text-center text-sm text-muted-foreground">
         Results for <span className="text-primary">{q}</span>
       </h4>
 

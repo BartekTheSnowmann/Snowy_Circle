@@ -9,13 +9,13 @@ async function page() {
   return (
     <section className="px-4 py-16">
       <div className="flex flex-col items-center gap-8">
-        <div className="text-center">
-          <h1 className="font-bold">Our Users</h1>
+        <div className="text-center drop-shadow-md">
+          <h1 className="mb-2 text-3xl font-bold">Our Users</h1>
           <p className="max-w-sm text-muted-foreground">
             Witam wszystkich serdecznie!
           </p>
         </div>
-        <div className="flex gap-4">
+        <div className="flex flex-wrap gap-8">
           {users.map((user) => (
             <UserInfo
               key={`users=${user.id}`}

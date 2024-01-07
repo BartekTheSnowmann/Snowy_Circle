@@ -50,7 +50,7 @@
 }
 
 .separator {
-  @apply h-[2px] w-40 bg-primary;
+  @apply h-[2px] w-40 bg-muted;
 }
 
 /* applied to container */

@@ -8,8 +8,8 @@ interface Props {
 function UserBio({ bio, isProfile }: Props) {
   if (isProfile) {
     return (
-      <p className="mx-auto max-w-md text-center text-sm">
-        {bio ? bio : "Tell something bout youself"}
+      <p className="mx-auto max-w-md text-center text-sm text-muted-foreground">
+        {bio ? bio : "..."}
       </p>
     );
   }

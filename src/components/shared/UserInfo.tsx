@@ -10,7 +10,7 @@ interface Props {
 
 function UserInfo({ username, image, size }: Props) {
   return (
-    <div className="flex flex-col items-center gap-2">
+    <div className="flex items-center gap-2">
       <Link href={`/user/${username}`}>
         <UserAvatar
           size={size ? size : "sm"}

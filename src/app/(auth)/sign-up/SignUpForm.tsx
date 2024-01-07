@@ -90,14 +90,14 @@ export function SignUpForm() {
             control={form.control}
             name="image"
             render={({ field }) => (
-              <FormItem className="my-4 self-start">
+              <FormItem className="my-4 flex gap-2">
                 <FormControl>
                   <ImageUploader
                     setImage={field.onChange}
                     image={field.value}
                   />
                 </FormControl>
-                <FormDescription>Your Image</FormDescription>
+                <FormDescription>Your Profile Picture</FormDescription>
                 <FormMessage />
               </FormItem>
             )}

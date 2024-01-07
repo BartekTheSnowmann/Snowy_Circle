@@ -12,19 +12,22 @@ function Comment({ comment }: { comment: CommentWithUser }) {
   const canEdit = session?.user?.id == comment.user.id;
 
   return (
-    <div className="my-4 bg-primary/20 p-4">
-      <div className="flex items-center justify-between">
+    <div className="my-4 rounded-md bg-muted p-4">
+      <div className="flex items-start justify-between">
         <UserInfo
           username={comment.user.username}
           image={comment.user.image!}
         />
-        <DateBadge createdAt={comment.createdAt} />
-      </div>
-      {canEdit && (
-        <div className="my-2 ml-auto w-fit">
-          <DeletePostBtn isComment={true} commentId={comment.id} />
+        <div className="flex flex-col items-end gap-2">
+          <DateBadge createdAt={comment.createdAt} />
+          {canEdit && (
+            <div className="my-2 ml-auto w-fit">
+              <DeletePostBtn isComment={true} commentId={comment.id} />
+            </div>
+          )}
         </div>
-      )}
+      </div>
+
       <div className="my-2">{comment.body}</div>
     </div>
   );

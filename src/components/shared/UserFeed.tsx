@@ -5,6 +5,7 @@ import React from "react";
 import Post from "./Post";
 import NoSession from "./NoSession";
 import LoadMore from "../LoadMore";
+import NoMorePosts from "../idk/NoMorePosts";
 
 async function UserFeed() {
   let perPage = 12;
@@ -17,7 +18,7 @@ async function UserFeed() {
 
   const postsData = await getUserFeed(session.user.id, perPage, page);
   if (!postsData.success) {
-    return postsData.message;
+    return <NoMorePosts />;
   }
 
   return (

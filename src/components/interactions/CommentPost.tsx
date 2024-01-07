@@ -30,12 +30,16 @@ function CommentPost({ postId }: { postId: string }) {
       <form className="flex flex-col" onSubmit={handleSubmitComment}>
         <textarea
           rows={3}
-          className="p-2"
+          className="bg-background p-2 outline-none"
           placeholder="Nice post..."
           value={body}
           onChange={(e) => setBody(e.target.value)}
         />
-        <Button className="rounded-l-none" variant={"outline"} type="submit">
+        <Button
+          className="bg-muted/40 hover:bg-muted"
+          variant={"outline"}
+          type="submit"
+        >
           Submit
         </Button>
       </form>

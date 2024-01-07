@@ -8,7 +8,7 @@ interface Props {
 
 function DateBadge({ createdAt }: Props) {
   return (
-    <Badge className="pointer-events-none bg-transparent text-muted-foreground">
+    <Badge className="pointer-events-none bg-transparent text-muted-foreground drop-shadow-md">
       {DateConverter({
         dateString: createdAt.toString(),
       })}

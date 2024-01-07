@@ -8,7 +8,8 @@ async function Postslist({ q }: { q: string }) {
   if (!foundPosts?.length || foundPosts == undefined) {
     return (
       <div className="m-4">
-        <p>Found 0 posts</p>
+        <p className="font-medium">Found 0 posts</p>
+        <div className="separator mb-4 mt-2" />
       </div>
     );
   }
@@ -16,7 +17,7 @@ async function Postslist({ q }: { q: string }) {
   return (
     <div className="m-4">
       <div>
-        <p>
+        <p className="font-medium">
           Found {foundPosts.length} {foundPosts.length > 1 ? "posts" : "post"}
         </p>
         <div className="separator mb-4 mt-2" />
