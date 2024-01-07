@@ -1,10 +1,26 @@
+import { GearIcon } from "@radix-ui/react-icons";
 import React from "react";
+import { getAllUsers } from "./actions";
+import UserInfo from "@/components/shared/UserInfo";
 
-function page() {
+async function page() {
+  const users = await getAllUsers();
+
   return (
     <section className="px-4 py-16">
-      <h1>All of our Users</h1>
-      <p>I love you</p>
+      <div className="flex flex-col items-center gap-8">
+        <div className="text-center">
+          <h1 className="font-bold">Our Users</h1>
+          <p className="max-w-sm text-muted-foreground">
+            Witam wszystkich serdecznie!
+          </p>
+        </div>
+        <div className="flex gap-4">
+          {users.map((user) => (
+            <UserInfo size="md" image={user.image!} username={user.username} />
+          ))}
+        </div>
+      </div>
     </section>
   );
 }

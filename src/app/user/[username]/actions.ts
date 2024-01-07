@@ -14,6 +14,7 @@ export type TSelectedUser = {
   username: string | null;
   backgroundImage?: string | null;
   bio?: string | null;
+  password: string;
 };
 
 export type TUserWithPosts = {

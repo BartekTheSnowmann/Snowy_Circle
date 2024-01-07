@@ -5,13 +5,18 @@ import Link from "next/link";
 interface Props {
   username: string;
   image: string;
+  size?: "sm" | "md" | "lg";
 }
 
-function UserInfo({ username, image }: Props) {
+function UserInfo({ username, image, size }: Props) {
   return (
     <div className="flex items-center gap-2">
       <Link href={`/user/${username}`}>
-        <UserAvatar size="sm" userImage={image} username={username} />
+        <UserAvatar
+          size={size ? size : "sm"}
+          userImage={image}
+          username={username}
+        />
       </Link>
       <p className="">{username}</p>
     </div>
