@@ -17,7 +17,12 @@ async function page() {
         </div>
         <div className="flex gap-4">
           {users.map((user) => (
-            <UserInfo size="md" image={user.image!} username={user.username} />
+            <UserInfo
+              key={`users=${user.id}`}
+              size="md"
+              image={user.image!}
+              username={user.username}
+            />
           ))}
         </div>
       </div>

@@ -26,17 +26,18 @@ function Post({ post, image, username, showInteractions, canEdit }: Props) {
       <div>
         <div className="flex items-center justify-between">
           <UserInfo username={username} image={image} />
-          <DateBadge createdAt={post.createdAt} />
-        </div>
-
-        {canEdit && (
-          <div className="my-2 ml-auto w-fit">
-            <DeletePostBtn postId={post.id} />
+          <div className="flex flex-col items-end gap-2">
+            <DateBadge createdAt={post.createdAt} />
+            {canEdit && (
+              <div>
+                <DeletePostBtn postId={post.id} />
+              </div>
+            )}
           </div>
-        )}
+        </div>
       </div>
 
-      <p className="my-2">{post.body}</p>
+      <p className="my-4">{post.body}</p>
 
       {post.image && (
         <Image
