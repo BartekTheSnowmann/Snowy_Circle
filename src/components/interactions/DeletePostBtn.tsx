@@ -25,10 +25,10 @@ function DeletePostBtn({
       onClick={() =>
         startTransition(async () => {
           if (isComment) {
-            await deleteComment(commentId, pathname);
+            await deleteComment(commentId!, pathname);
             return;
           }
-          await deletePost(postId);
+          await deletePost(postId!);
         })
       }
       className="m-0 bg-red-400 p-2 hover:bg-red-500"
