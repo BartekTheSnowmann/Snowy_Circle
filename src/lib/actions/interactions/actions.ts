@@ -213,6 +213,7 @@ export async function likePost(postId: string): Promise<LikePostReturnType> {
       session.user.id,
       "like",
     );
+    revalidatePath("/notifications");
 
     return {
       success: true,
