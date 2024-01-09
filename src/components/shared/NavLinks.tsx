@@ -5,6 +5,7 @@ import SignOutBtn from "./SignOutBtn";
 import { Button } from "../ui/button";
 import { Session } from "next-auth";
 import { twMerge } from "tailwind-merge";
+import NotificationIcon from "@/app/notifications/NotificationIcon";
 
 interface Props {
   session: Session | null;
@@ -19,7 +20,7 @@ export async function DesktopNavlinks({ session }: Props) {
           className="flex items-center gap-2 font-medium capitalize duration-300 hover:text-primaryForeground"
           href={navlink.link}
         >
-          <navlink.icon />
+          <navlink.icon className="h-4 w-4" />
           {navlink.name}
         </Link>
       ))}
@@ -31,10 +32,11 @@ export async function DesktopNavlinks({ session }: Props) {
               className="flex items-center gap-2 font-medium capitalize duration-300 hover:text-primaryForeground"
               href={userlink.link}
             >
-              <userlink.icon />
+              <userlink.icon className="h-4 w-4" />
               {userlink.name}
             </Link>
           ))}
+          <NotificationIcon />
 
           <SignOutBtn />
         </>
@@ -79,6 +81,7 @@ export async function MobileNavlinks({
               <userlink.icon className="h-8 w-8" />
             </Link>
           ))}
+          <NotificationIcon />
 
           <SignOutBtn iconOnly />
         </>

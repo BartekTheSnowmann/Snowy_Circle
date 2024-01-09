@@ -5,6 +5,7 @@ import {
   EnterIcon,
   MagnifyingGlassIcon,
   AccessibilityIcon,
+  EnvelopeClosedIcon,
 } from "@radix-ui/react-icons";
 
 export const navLinks = [
@@ -44,6 +45,11 @@ export const userLinks = [
     link: "/profile",
     icon: AvatarIcon,
   },
+  // {
+  //   name: "notifications",
+  //   link: "/notifications",
+  //   icon: EnvelopeClosedIcon,
+  // },
   // {
   //   name: "create post",
   //   link: "/create-post",

@@ -9,30 +9,32 @@ export default function Home({
   searchParams: { feed: string };
 }) {
   return (
-    <main className="w-full p-4">
-      <div className="mx-auto my-8 flex w-fit">
-        <Button
-          asChild
-          variant={feed === "discover" ? "default" : "outline"}
-          className={`${
-            feed === "discover" ? "pointer-events-none" : ""
-          } rounded-r-none`}
-        >
-          <Link href={"?feed=discover"}>Discover</Link>
-        </Button>
-        <Button
-          asChild
-          variant={
-            feed === "my-feed" || feed === undefined ? "default" : "outline"
-          }
-          className={`${
-            feed === "my-feed" || feed === undefined
-              ? "pointer-events-none"
-              : ""
-          } rounded-l-none`}
-        >
-          <Link href={"?feed=my-feed"}>My Feed</Link>
-        </Button>
+    <main className="w-full">
+      <div className="sticky top-0 z-50 flex h-20 items-center bg-background shadow-md">
+        <div className="mx-auto flex w-fit">
+          <Button
+            asChild
+            variant={feed === "discover" ? "default" : "outline"}
+            className={`${
+              feed === "discover" ? "pointer-events-none" : ""
+            } rounded-r-none`}
+          >
+            <Link href={"?feed=discover"}>Discover</Link>
+          </Button>
+          <Button
+            asChild
+            variant={
+              feed === "my-feed" || feed === undefined ? "default" : "outline"
+            }
+            className={`${
+              feed === "my-feed" || feed === undefined
+                ? "pointer-events-none"
+                : ""
+            } rounded-l-none`}
+          >
+            <Link href={"?feed=my-feed"}>My Feed</Link>
+          </Button>
+        </div>
       </div>
 
       {feed === undefined && <UserFeed />}

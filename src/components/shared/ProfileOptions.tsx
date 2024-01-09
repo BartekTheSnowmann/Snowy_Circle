@@ -1,5 +1,5 @@
 "use client";
-import { useTransition } from "react";
+import { useEffect, useTransition } from "react";
 import {
   AlertDialog,
   AlertDialogCancel,
@@ -57,6 +57,14 @@ function ProfileOptions({
       password: userPassword,
     },
   });
+
+  useEffect(() => {
+    form.reset({
+      username: userUsername,
+      bio: userBio || "",
+      password: userPassword,
+    });
+  }, [userUsername, userBio, userPassword, form]);
 
   async function onSubmit(values: z.infer<typeof updateUserSchema>) {
     if (userUsername === values.username) {

@@ -76,24 +76,13 @@ export async function createNewPost(body: string, image?: string) {
   return newPost;
 }
 
-export async function deletePost(id: string, variant: string) {
+export async function deletePost(id: string) {
   const session = await getServerSession(authOptions);
   if (!session?.user) {
     return {
       success: false,
       message: "Unauthorized",
     };
-  }
-
-  if (variant === "comment") {
-    await prisma.comment.delete({
-      where: {
-        id: id,
-      },
-    });
-
-    revalidatePath(`/post/${id}`);
-    return;
   }
 
   const post = await prisma.post.findUnique({
@@ -127,4 +116,15 @@ export async function deletePost(id: string, variant: string) {
 
   revalidatePath("/profile");
   revalidatePath(`/post/${id}`);
+}
+
+export async function deleteComment(commentId: string, path: string) {
+  await prisma.comment.delete({
+    where: {
+      id: commentId,
+    },
+  });
+
+  revalidatePath(path);
+  return;
 }

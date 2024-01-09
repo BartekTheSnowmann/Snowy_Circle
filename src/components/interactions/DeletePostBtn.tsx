@@ -3,7 +3,8 @@
 import React, { useTransition } from "react";
 import { Button } from "../ui/button";
 import { TrashIcon } from "@radix-ui/react-icons";
-import { deletePost } from "@/lib/actions/posts/actions";
+import { deleteComment, deletePost } from "@/lib/actions/posts/actions";
+import { usePathname } from "next/navigation";
 
 function DeletePostBtn({
   postId,
@@ -17,16 +18,17 @@ function DeletePostBtn({
   commentId?: string;
 }) {
   const [pending, startTransition] = useTransition();
+  const pathname = usePathname();
 
   return (
     <Button
       onClick={() =>
         startTransition(async () => {
           if (isComment) {
-            await deletePost(commentId!, "comment");
+            await deleteComment(commentId, pathname);
             return;
           }
-          await deletePost(postId!, "post");
+          await deletePost(postId);
         })
       }
       className="m-0 bg-red-400 p-2 hover:bg-red-500"

@@ -2,8 +2,8 @@ import React from "react";
 import { getUsers } from "./actions";
 import UserInfo from "@/components/shared/UserInfo";
 
-async function Userslist({ q }: { q: string }) {
-  const { foundUsers } = await getUsers(q);
+async function Userslist({ q }: { q?: string }) {
+  const { foundUsers } = await getUsers(q || "");
 
   if (!foundUsers?.length || foundUsers == undefined) {
     return (

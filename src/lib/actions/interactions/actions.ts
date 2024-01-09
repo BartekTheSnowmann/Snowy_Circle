@@ -5,6 +5,7 @@ import prisma from "@/lib/prisma/db";
 import { getServerSession } from "next-auth";
 import { revalidatePath } from "next/cache";
 import { Post } from "@prisma/client";
+import { createNotification } from "@/app/notifications/actions";
 
 export async function getPostInteractions(postId: string) {
   const postData = await prisma.post.findUnique({
@@ -61,6 +62,14 @@ export async function commentPost(body: string, postId: string) {
       },
     },
   });
+
+  // await createNotification(
+  //   updatedPost.userId,
+  //   postId,
+  //   session.user.id,
+  //   "comment",
+  // );
+
   revalidatePath(`post/${postId}`);
   return {
     success: true,
@@ -146,6 +155,7 @@ export async function likePost(postId: string): Promise<LikePostReturnType> {
   const hasLiked = post?.likedIds.find((userId) => userId === session?.user.id);
 
   if (hasLiked) {
+    // Unlike the post
     const unlike = post?.likedIds.filter(
       (userId) => userId !== session?.user.id,
     );
@@ -169,14 +179,24 @@ export async function likePost(postId: string): Promise<LikePostReturnType> {
       };
     }
 
+    // Delete the notification associated with this like action
+    await prisma.notification.deleteMany({
+      where: {
+        type: "like",
+        userId: updatedPost.userId,
+        actionUserId: session.user.id,
+        postId,
+      },
+    });
+
     return {
       success: true,
-      message: "Ok",
+      message: "Post unliked successfully",
       updatedPost,
     };
   } else {
     revalidatePath("/");
-    await prisma.post.update({
+    const updatedPost = await prisma.post.update({
       where: {
         id: postId,
       },
@@ -186,9 +206,17 @@ export async function likePost(postId: string): Promise<LikePostReturnType> {
         },
       },
     });
+
+    await createNotification(
+      updatedPost.userId,
+      postId,
+      session.user.id,
+      "like",
+    );
+
     return {
       success: true,
-      message: "ok",
+      message: "Post liked successfully",
     };
   }
 }

@@ -1,11 +1,8 @@
-import { GearIcon } from "@radix-ui/react-icons";
-import React from "react";
-import { getAllUsers } from "./actions";
-import UserInfo from "@/components/shared/UserInfo";
+import React, { Suspense } from "react";
+import { Skeleton } from "@/components/ui/skeleton";
+import Userslist from "../search/Userslist";
 
 async function page() {
-  const users = await getAllUsers();
-
   return (
     <section className="px-4 py-16">
       <div className="flex flex-col items-center gap-8">
@@ -15,15 +12,10 @@ async function page() {
             Witam wszystkich serdecznie!
           </p>
         </div>
-        <div className="flex flex-wrap gap-8">
-          {users.map((user) => (
-            <UserInfo
-              key={`users=${user.id}`}
-              size="md"
-              image={user.image!}
-              username={user.username}
-            />
-          ))}
+        <div className="grid grid-cols-2 gap-8">
+          <Suspense fallback={<Skeleton className="h-10 w-full rounded-md" />}>
+            <Userslist />
+          </Suspense>
         </div>
       </div>
     </section>

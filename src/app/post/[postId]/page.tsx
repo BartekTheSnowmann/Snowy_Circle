@@ -14,13 +14,15 @@ async function page({ params: { postId } }: { params: { postId: string } }) {
   }
 
   return (
-    <Post
-      canEdit={session?.user.id == foundPost.User.id}
-      showInteractions
-      post={foundPost}
-      image={foundPost?.User.image!}
-      username={foundPost?.User.username}
-    />
+    <div className="m-4">
+      <Post
+        canEdit={session?.user.id == foundPost.User.id}
+        showInteractions
+        post={foundPost}
+        image={foundPost?.User.image!}
+        username={foundPost?.User.username}
+      />
+    </div>
   );
 }
 

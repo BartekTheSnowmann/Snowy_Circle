@@ -21,6 +21,7 @@ model User {
   comments        Comment[] @relation("userComments")
 
   // Rest of your model
+  Notification Notification[]
 }
 
 model Post {
@@ -35,6 +36,7 @@ model Post {
   comments  Comment[] @relation("postComments")
 
   // Rest of your model
+  Notification Notification[]
 }
 
 model Comment {
@@ -50,4 +52,22 @@ model Comment {
   Post   Post?   @relation("postComments", fields: [postId], references: [id])
 
   // Rest of your model
+}
+
+model Notification {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  type      String // Notification type: like, comment, follow, etc.
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+  body      String?
+
+  actionUserId String?
+
+  userId String @db.ObjectId
+  user   User   @relation(fields: [userId], references: [id])
+
+  postId String? @db.ObjectId
+  post   Post?   @relation(fields: [postId], references: [id])
+
+  // Additional fields relevant to the notification
 }

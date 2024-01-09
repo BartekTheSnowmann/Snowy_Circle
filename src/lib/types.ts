@@ -1,4 +1,4 @@
-import { Comment, Post } from "@prisma/client";
+import { Comment, Notification, Post } from "@prisma/client";
 
 export type CommentWithUser = {
   id: string;
@@ -41,5 +41,27 @@ export type TComment = {
     id: string;
     image: string | null;
     username: string;
+  };
+};
+
+export type TExtendedNotification = {
+  post: {
+    id: string;
+    body: string;
+  } | null;
+  actionUser: {
+    id: string;
+    username: string;
+    image: string;
+  };
+} & Notification;
+
+export type TUpdateData = {
+  username: string;
+  updateData: {
+    backgroundImage?: string;
+    image?: string;
+    bio?: string;
+    username?: string;
   };
 };

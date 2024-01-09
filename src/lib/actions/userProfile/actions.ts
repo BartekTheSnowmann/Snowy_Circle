@@ -1,19 +1,8 @@
 "use server";
 
 import prisma from "@/lib/prisma/db";
+import { TUpdateData } from "@/lib/types";
 import { revalidatePath } from "next/cache";
-
-export type TUpdateData = {
-  username: string;
-  updateData: {
-    backgroundImage?: string;
-    image?: string;
-    bio?: string;
-    username?: string;
-  };
-};
-
-// Update Functions
 
 // Update Data
 
@@ -25,11 +14,7 @@ export async function updateUser(data: TUpdateData) {
     };
   }
 
-  const foundUser = await prisma.user.findUnique({
-    where: {
-      username: data.username,
-    },
-  });
+  const foundUser = await getUserByUsername(data.username);
 
   if (!foundUser) {
     return {
@@ -71,4 +56,32 @@ export async function deleteAccount(username: string) {
     },
   });
   return;
+}
+
+export async function getUserById(userId: string) {
+  const foundUser = await prisma.user.findUnique({
+    where: {
+      id: userId,
+    },
+  });
+
+  if (!foundUser) {
+    return;
+  }
+
+  return foundUser;
+}
+
+export async function getUserByUsername(username: string) {
+  const foundUser = await prisma.user.findUnique({
+    where: {
+      username,
+    },
+  });
+
+  if (!foundUser) {
+    return;
+  }
+
+  return foundUser;
 }
