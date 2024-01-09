@@ -12,7 +12,7 @@ export default async function Sidebar() {
   return (
     <div
       className={cn(
-        "sticky top-0 hidden h-screen min-w-[260px] max-w-[320px] border-r-2 md:block",
+        "sticky top-0 hidden h-screen min-w-[260px] max-w-[320px] border-r-2 border-muted md:block",
       )}
     >
       <div className="flex flex-col items-center">

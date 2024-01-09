@@ -11,7 +11,7 @@ interface Props {
 
 function UserBanner({ user, isProfile }: Props) {
   return (
-    <div className="">
+    <div>
       <div className="relative">
         <div
           style={{
@@ -34,7 +34,7 @@ function UserBanner({ user, isProfile }: Props) {
           />
         </div>
       </div>
-      <div className="flex items-center justify-between border-y-2 px-6 py-2">
+      <div className="flex items-center justify-between border-y-2 border-muted px-8 py-2">
         <h4 className="font-medium">{user.username}</h4>
         {isProfile && (
           <ProfileOptions

@@ -27,7 +27,19 @@ function SignOutBtn({ iconOnly }: Props) {
     );
   }
 
-  return <Button onClick={() => signOut()}>sign out</Button>;
+  return (
+    <Button
+      className={twMerge("text-md h-auto w-fit gap-2 font-medium")}
+      variant={"default"}
+      asChild
+      onClick={() => signOut()}
+    >
+      <Link key={`navlink-sign_out`} href={"/api/auth/signin"}>
+        <ExitIcon className="h-4 w-4" />
+        Sign Out
+      </Link>
+    </Button>
+  );
 }
 
 export default SignOutBtn;

@@ -36,7 +36,7 @@ async function page({ params: { username } }: Props) {
     <section>
       <UserBanner isProfile={false} user={foundUser} />
 
-      <div className="flex items-center justify-end px-4 py-2">
+      <div className="mt-8 flex items-center justify-end px-4">
         <Button asChild variant={"outline"} className="rounded-r-none">
           <Link
             className="flex items-center gap-2 px-4"
@@ -59,8 +59,9 @@ async function page({ params: { username } }: Props) {
         )}
       </div>
 
-      <div className="p-16">
-        <UserPosts user={foundUser} />
+      <div>
+        <h4 className="mx-8 mb-4 font-semibold">Posts</h4>
+        <UserPosts canEdit user={foundUser} />
       </div>
     </section>
   );

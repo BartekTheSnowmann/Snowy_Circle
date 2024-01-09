@@ -29,7 +29,7 @@ function NotificationBubble({ session }: { session: Session }) {
     const interval = setInterval(async () => {
       const updatedNotifications = await handleGetNotifications();
       setNotifications(updatedNotifications);
-    }, 3000);
+    }, 300000);
 
     return () => clearInterval(interval);
   }, [session.user.id]);
@@ -41,6 +41,9 @@ function NotificationBubble({ session }: { session: Session }) {
         className="relative hidden items-center gap-2 font-medium capitalize duration-300 hover:text-primaryForeground md:flex"
         href={"/notifications"}
       >
+        <div className="absolute -left-2 top-0 flex h-4 w-4 items-center justify-center rounded-full bg-destructive text-white shadow-md">
+          <span className="text-sm font-light">{countReads}</span>
+        </div>
         <EnvelopeClosedIcon className="h-4 w-4" />
         Notifications
       </Link>

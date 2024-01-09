@@ -6,7 +6,7 @@ function Footer() {
   return (
     <footer
       className={cn(
-        "sticky top-0 hidden h-screen min-w-[260px] max-w-[320px] border-l-2 pb-12 md:block",
+        "sticky top-0 hidden h-screen min-w-[260px] max-w-[320px] border-l-2 border-muted pb-12 md:block",
       )}
     >
       <div className="flex flex-col items-center">

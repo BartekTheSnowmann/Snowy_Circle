@@ -14,22 +14,22 @@ export default function Home({
         <div className="mx-auto flex w-fit">
           <Button
             asChild
-            variant={feed === "discover" ? "default" : "outline"}
+            variant={
+              feed === "discover" || feed === undefined ? "default" : "outline"
+            }
             className={`${
-              feed === "discover" ? "pointer-events-none" : ""
+              feed === "discover" || feed === undefined
+                ? "pointer-events-none"
+                : ""
             } rounded-r-none`}
           >
             <Link href={"?feed=discover"}>Discover</Link>
           </Button>
           <Button
             asChild
-            variant={
-              feed === "my-feed" || feed === undefined ? "default" : "outline"
-            }
+            variant={feed === "my-feed" ? "default" : "outline"}
             className={`${
-              feed === "my-feed" || feed === undefined
-                ? "pointer-events-none"
-                : ""
+              feed === "my-feed" ? "pointer-events-none" : ""
             } rounded-l-none`}
           >
             <Link href={"?feed=my-feed"}>My Feed</Link>
@@ -37,7 +37,7 @@ export default function Home({
         </div>
       </div>
 
-      {feed === undefined && <UserFeed />}
+      {feed === undefined && <DiscoverFeed />}
       {feed === "my-feed" && <UserFeed />}
       {feed === "discover" && <DiscoverFeed />}
     </main>

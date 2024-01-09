@@ -65,7 +65,7 @@ function PostInteractions({
       </div>
 
       {showInteractions && (
-        <div className="mt-4">
+        <div className="mt-4 border-t-2 border-muted">
           {comments.length > 0 &&
             comments.map((comment: CommentWithUser) => (
               <Comment key={comment.id} comment={comment} />

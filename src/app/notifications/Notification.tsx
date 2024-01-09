@@ -21,7 +21,9 @@ function Notification({
 
   return (
     <div
-      className={`${!notification.read && "bg-muted-foreground"} bg-muted p-4`}
+      className={`${
+        !notification.read && "bg-primary"
+      } bg-primary-foreground p-4`}
     >
       <div className="flex flex-col items-start gap-4">
         <div className="flex w-full justify-between">

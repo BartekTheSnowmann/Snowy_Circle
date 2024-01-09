@@ -22,8 +22,8 @@ async function UserFeed() {
   }
 
   return (
-    <div className="p-4">
-      <div className="flex flex-col gap-16">
+    <div className="m-8">
+      <div className="flex flex-col gap-8">
         {postsData.posts?.map((post) => (
           <Post
             key={post.id}

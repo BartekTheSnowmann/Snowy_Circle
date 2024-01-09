@@ -82,7 +82,6 @@ export async function MobileNavlinks({
             </Link>
           ))}
           <NotificationIcon />
-
           <SignOutBtn iconOnly />
         </>
       ) : (

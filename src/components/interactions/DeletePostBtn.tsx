@@ -31,7 +31,8 @@ function DeletePostBtn({
           await deletePost(postId!);
         })
       }
-      className="m-0 bg-red-400 p-2 hover:bg-red-500"
+      size={"icon"}
+      className="m-0 bg-destructive"
       variant={"default"}
     >
       <TrashIcon className="h-6 w-6 rounded-full text-white" />

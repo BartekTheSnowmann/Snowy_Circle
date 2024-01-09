@@ -22,7 +22,7 @@ function Post({ post, image, username, showInteractions, canEdit }: Props) {
   canEdit = session?.user.id === post.userId;
 
   return (
-    <div className="m-4 mx-auto flex w-full flex-col border-2 p-4">
+    <div className="m-4 mx-auto flex w-full flex-col rounded-md bg-primary-foreground p-4 shadow-md">
       <div>
         <div className="flex items-center justify-between">
           <UserInfo username={username} image={image} />
@@ -41,7 +41,7 @@ function Post({ post, image, username, showInteractions, canEdit }: Props) {
 
       {post.image && (
         <Image
-          className="w-full"
+          className="w-full border-2 border-muted"
           src={post.image}
           alt="post image"
           width={300}

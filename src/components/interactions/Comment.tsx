@@ -12,7 +12,7 @@ function Comment({ comment }: { comment: CommentWithUser }) {
   const canEdit = session?.user?.id == comment.user.id;
 
   return (
-    <div className="my-4 rounded-md bg-muted p-4">
+    <div className="my-4 rounded-md bg-background p-4 shadow-md">
       <div className="flex items-start justify-between">
         <UserInfo
           username={comment.user.username}

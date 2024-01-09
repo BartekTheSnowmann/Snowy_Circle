@@ -20,7 +20,7 @@ export default withUt({
     },
     extend: {
       colors: {
-        primaryColor: "#16a34a",
+        primaryColor: "#2563eb",
         primaryForeground: "#094730",
         secondaryColor: "#00A3ED",
         secondaryForeground: "#355EB1",

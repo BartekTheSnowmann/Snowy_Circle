@@ -24,7 +24,7 @@ async function UserPosts({ user, canEdit }: Props) {
   }
 
   return (
-    <div className="flex flex-col gap-16">
+    <div className="m-8 flex flex-col gap-8">
       {postsData?.posts.map((post) => (
         <Post
           canEdit={canEdit}

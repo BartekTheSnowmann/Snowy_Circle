@@ -131,6 +131,9 @@ export async function getDiscoverFeed(
         NOT: { id },
       },
     },
+    orderBy: {
+      createdAt: "desc",
+    },
     take: perPage,
     skip: Number(page - 1) * perPage,
     include: {

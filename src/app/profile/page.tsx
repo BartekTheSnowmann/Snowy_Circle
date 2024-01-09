@@ -23,11 +23,11 @@ async function page() {
   return (
     <section>
       <UserBanner isProfile={true} user={foundUser} />
-      <div className="mt-8 px-4">
+      <div className="mt-8">
         <UserBio isProfile bio={foundUser.bio} />
         <CreatePost />
-        <div className="my-12">
-          <h4 className="my-4 font-semibold">Posts</h4>
+        <div>
+          <h4 className="mx-8 mb-4 font-semibold">Posts</h4>
           <UserPosts canEdit user={foundUser} />
         </div>
       </div>
