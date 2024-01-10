@@ -5,6 +5,7 @@ import { Button } from "../ui/button";
 import { likePost } from "@/lib/actions/interactions/actions";
 import { HeartFilledIcon, HeartIcon } from "@radix-ui/react-icons";
 import { toast } from "sonner";
+import { redirect, useRouter } from "next/navigation";
 
 interface Props {
   postId: string;
@@ -15,6 +16,7 @@ interface Props {
 function LikeBtn({ postId, isLiked, likesAmount }: Props) {
   const [pending, startTransition] = useTransition();
   const [liked, setLiked] = useState<boolean>(isLiked);
+  const router = useRouter();
 
   useEffect(() => {
     setLiked(isLiked);
@@ -24,7 +26,7 @@ function LikeBtn({ postId, isLiked, likesAmount }: Props) {
     startTransition(async () => {
       const result = await likePost(postId);
       if (result.success === false) {
-        toast.warning(result.message);
+        router.push("/sign-in");
       } else {
         setLiked((prevLiked) => !prevLiked);
       }

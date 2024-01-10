@@ -34,7 +34,7 @@ function SignOutBtn({ iconOnly }: Props) {
       asChild
       onClick={() => signOut()}
     >
-      <Link key={`navlink-sign_out`} href={"/api/auth/signin"}>
+      <Link key={`navlink-sign_out`} href={"/"}>
         <ExitIcon className="h-4 w-4" />
         Sign Out
       </Link>

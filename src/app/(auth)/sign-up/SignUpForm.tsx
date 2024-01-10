@@ -35,7 +35,7 @@ export function SignUpForm() {
     if (result.success === false) {
       return toast.error(result.message);
     } else {
-      toast.success(result.message);
+      toast.success(`User ${result.newUser?.username} has been created!`);
       router.push(`/api/auth/signin`);
     }
   }

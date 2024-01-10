@@ -41,7 +41,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Toaster richColors />
+          <Toaster duration={1200} theme="system" />
           <AuthProvider>
             <div className="mx-auto max-w-7xl md:flex md:justify-center">
               <Sidebar />

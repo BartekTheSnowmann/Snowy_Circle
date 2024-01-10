@@ -8,6 +8,8 @@ import DateBadge from "./DateBadge";
 import DeletePostBtn from "../interactions/DeletePostBtn";
 import { useSession } from "next-auth/react";
 import { TPostWithComments } from "@/lib/types";
+import { Button } from "../ui/button";
+import { toast } from "sonner";
 
 interface Props {
   post: TPostWithComments;
