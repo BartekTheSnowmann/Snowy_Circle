@@ -7,7 +7,7 @@ async function MobileNavbar() {
   const session = await getServerSession(authOptions);
 
   return (
-    <nav className="h-20 border-t-2 bg-background p-4">
+    <nav className="h-20 border-t-2 border-muted bg-background p-4">
       <MobileNavlinks session={session} />
     </nav>
   );

@@ -11,15 +11,24 @@ async function page() {
   }
 
   const notifications = await getUserNotifications(session.user.id);
+  if (!notifications.length) {
+    return (
+      <section className="m-8">
+        <p className="font-medium text-muted-foreground">
+          You have 0 notifications
+        </p>
+      </section>
+    );
+  }
 
   return (
-    <div className="m-4">
+    <section className="m-8">
       <div className="flex flex-col gap-4">
         {notifications.map((notification) => (
           <Notification key={notification.id} notification={notification} />
         ))}
       </div>
-    </div>
+    </section>
   );
 }
 

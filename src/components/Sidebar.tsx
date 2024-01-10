@@ -18,7 +18,7 @@ export default async function Sidebar() {
       <div className="flex flex-col items-center">
         <div className="flex h-20 items-center">
           <Link href="/">
-            <Image src={Logo1} alt="logo" width={80} height={80} />
+            <Image src={Logo1} alt="logo" width={70} height={70} />
           </Link>
         </div>
 

@@ -27,7 +27,7 @@ function CommentPost({ postId }: { postId: string }) {
 
   return (
     <>
-      <form className="flex flex-col" onSubmit={handleSubmitComment}>
+      <form className="mt-4 flex flex-col" onSubmit={handleSubmitComment}>
         <textarea
           rows={3}
           className="rounded-t-md bg-background p-2 outline-none"

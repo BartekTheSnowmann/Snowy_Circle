@@ -91,6 +91,7 @@ export async function deletePost(id: string) {
     },
     include: {
       comments: true,
+      Notification: true, // Include notifications related to the post
     },
   });
 
@@ -105,6 +106,13 @@ export async function deletePost(id: string) {
       id: {
         in: commentIds,
       },
+    },
+  });
+
+  // Deleting notifications related to the post
+  await prisma.notification.deleteMany({
+    where: {
+      postId: id,
     },
   });
 

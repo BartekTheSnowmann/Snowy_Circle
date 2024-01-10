@@ -7,29 +7,29 @@ import React, { useEffect, useState } from "react";
 import { getUserNotifications } from "./actions";
 import { TExtendedNotification } from "@/lib/types";
 
-let countReads = 0;
-
 function NotificationBubble({ session }: { session: Session }) {
-  const [notifications, setNotifications] = useState<TExtendedNotification[]>();
-  const handleGetNotifications = async () => {
-    const notifications = await getUserNotifications(session.user.id);
-    countReads = notifications.reduce((count, item) => {
-      if (item.read === false) {
-        return count + 1;
-      }
-      return count;
-    }, 0);
+  const [notifications, setNotifications] = useState<TExtendedNotification[]>(
+    [],
+  );
+  const [countReads, setCountReads] = useState<number>(0);
 
-    return notifications;
+  const fetchNotifications = async () => {
+    try {
+      const notifications = await getUserNotifications(session.user.id);
+      setNotifications(notifications);
+      const unreadCount = notifications.filter((item) => !item.read).length;
+      setCountReads(unreadCount);
+    } catch (error) {
+      console.error("Failed to fetch notifications:", error);
+    }
   };
 
   useEffect(() => {
-    handleGetNotifications().then((res) => setNotifications(res));
+    fetchNotifications();
 
-    const interval = setInterval(async () => {
-      const updatedNotifications = await handleGetNotifications();
-      setNotifications(updatedNotifications);
-    }, 300000);
+    const interval = setInterval(() => {
+      fetchNotifications();
+    }, 3000);
 
     return () => clearInterval(interval);
   }, [session.user.id]);

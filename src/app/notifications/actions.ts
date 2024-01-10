@@ -23,6 +23,9 @@ export async function getUserNotifications(userId: string) {
     where: {
       userId: userId,
     },
+    orderBy: {
+      createdAt: "desc",
+    },
     include: {
       post: {
         select: {
@@ -57,25 +60,28 @@ export async function getUserNotifications(userId: string) {
 
 export async function createNotification(
   userId: string,
-  postId: string,
+  postId: string | undefined,
   actionUserId: string,
-  notificationType: "like" | "comment",
+  notificationType: "like" | "comment" | "follow",
 ) {
-  const actionUser = await getUserById(actionUserId);
-
-  let message = "";
-  if (!actionUser) {
-    return;
-  }
-
-  if (notificationType === "comment") {
-    message = `${actionUser?.username} commented your post`;
-  }
-  if (notificationType === "like") {
-    message = `${actionUser?.username} liked your post`;
-  }
-
   try {
+    const actionUser = await getUserById(actionUserId);
+
+    if (!actionUser) {
+      throw new Error("Action user not found.");
+    }
+
+    let message = "";
+    if (notificationType === "comment") {
+      message = `${actionUser.username} commented on your post`;
+    }
+    if (notificationType === "like") {
+      message = `${actionUser.username} liked your post`;
+    }
+    if (notificationType === "follow") {
+      message = `${actionUser.username} followed you`;
+    }
+
     const newNotification = await prisma.notification.create({
       data: {
         type: notificationType,

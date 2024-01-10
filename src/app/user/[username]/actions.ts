@@ -1,6 +1,7 @@
 "use server";
 
 import { authOptions } from "@/app/api/auth/[...nextauth]/options";
+import { createNotification } from "@/app/notifications/actions";
 import prisma from "@/lib/prisma/db";
 import { Post } from "@prisma/client";
 import { getServerSession } from "next-auth";
@@ -207,101 +208,90 @@ export async function getUserPosts(
 }
 
 export async function followUser(username: string) {
-  const session = await getServerSession(authOptions);
-  if (!session?.user) {
-    return {
-      success: false,
-      message: "Please log in!",
-    };
-  }
+  try {
+    const session = await getServerSession(authOptions);
+    if (!session?.user) {
+      return {
+        success: false,
+        message: "Please log in!",
+      };
+    }
 
-  const userToFollow = await prisma.user.findUnique({
-    where: {
-      username,
-    },
-  });
-
-  if (!userToFollow || userToFollow.id === session.user.id) {
-    return;
-  }
-
-  let currentUser;
-  let followings;
-  followings = await getFollowings(session.user.id);
-
-  if (followings == undefined) {
-    currentUser = await prisma.user.update({
+    const userToFollow = await prisma.user.findUnique({
       where: {
-        id: session?.user.id,
-      },
-      data: {
-        followingIds: {
-          push: userToFollow.id,
-        },
-      },
-      select: {
-        followingIds: true,
+        username,
       },
     });
-    revalidatePath("/");
-    return {
-      success: true,
-      message: `You followed ${userToFollow.username}`,
-      currentUser,
-    };
-  }
 
-  if (followings) {
-    const hasFollowed = Array.from(followings?.followingIds).find(
-      (userId) => userId == userToFollow.id,
-    );
+    if (!userToFollow || userToFollow.id === session.user.id) {
+      return {
+        success: false,
+        message: "Invalid user to follow.",
+      };
+    }
+
+    const followings = (await getFollowings(session.user.id)) || {
+      followingIds: [],
+    };
+
+    const hasFollowed = followings.followingIds.includes(userToFollow.id);
+
     if (!hasFollowed) {
-      currentUser = await prisma.user.update({
+      await prisma.user.update({
         where: {
-          id: session?.user.id,
+          id: session.user.id,
         },
         data: {
           followingIds: {
             push: userToFollow.id,
           },
         },
-        select: {
-          followingIds: true,
-        },
       });
+
+      await createNotification(
+        userToFollow.id,
+        undefined,
+        session.user.id,
+        "follow",
+      );
+
       revalidatePath("/");
       return {
         success: true,
         message: `You followed ${userToFollow.username}`,
-        currentUser,
+      };
+    } else {
+      const updatedFollowingIds = followings.followingIds.filter(
+        (id) => id !== userToFollow.id,
+      );
+
+      await prisma.user.update({
+        where: {
+          id: session.user.id,
+        },
+        data: {
+          followingIds: {
+            set: updatedFollowingIds,
+          },
+        },
+      });
+
+      await prisma.notification.deleteMany({
+        where: {
+          actionUserId: session.user.id,
+          type: "follow",
+        },
+      });
+
+      revalidatePath("/");
+      return {
+        success: true,
+        message: `You unfollowed ${userToFollow.username}`,
       };
     }
-  }
-
-  const hasFollowed = Array.from(followings?.followingIds).find(
-    (userId) => userId == userToFollow.id,
-  );
-
-  if (hasFollowed?.length) {
-    followings = Array.from(followings.followingIds).filter(
-      (userId) => userId !== userToFollow.id,
-    );
-    currentUser = await prisma.user.update({
-      where: {
-        id: session?.user.id,
-      },
-      data: {
-        followingIds: {
-          set: followings,
-        },
-      },
-    });
-    revalidatePath("/");
-    return {
-      success: true,
-      message: `You unfollowed ${userToFollow.username}`,
-      currentUser,
-    };
+  } catch (error) {
+    console.error(error);
+    throw new Error("Failed to follow/unfollow user.");
   }
 }
 

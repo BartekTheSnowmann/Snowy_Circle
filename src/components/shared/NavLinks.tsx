@@ -91,7 +91,9 @@ export async function MobileNavlinks({
         authLinks.map((authlink) => (
           <Button
             key={`mobile_authlink_btn-${authlink.name}`}
-            className={twMerge("m-0 p-0")}
+            className={twMerge(
+              "m-0 p-0 hover:bg-transparent hover:text-primary",
+            )}
             variant={"ghost"}
             asChild
           >

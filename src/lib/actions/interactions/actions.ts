@@ -63,12 +63,12 @@ export async function commentPost(body: string, postId: string) {
     },
   });
 
-  // await createNotification(
-  //   updatedPost.userId,
-  //   postId,
-  //   session.user.id,
-  //   "comment",
-  // );
+  await createNotification(
+    updatedPost.userId,
+    postId,
+    session.user.id,
+    "comment",
+  );
 
   revalidatePath(`post/${postId}`);
   return {
