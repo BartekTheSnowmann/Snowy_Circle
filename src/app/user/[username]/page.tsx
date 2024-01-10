@@ -60,7 +60,7 @@ async function page({ params: { username } }: Props) {
       </div>
 
       <div>
-        <h4 className="mx-8 mb-4 font-semibold">Posts</h4>
+        <h4 className="m-8 font-semibold">Posts</h4>
         <UserPosts canEdit user={foundUser} />
       </div>
     </section>

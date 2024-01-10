@@ -41,7 +41,7 @@ function NotificationBubble({ session }: { session: Session }) {
         className="relative hidden items-center gap-2 font-medium capitalize duration-300 hover:text-primary md:flex"
         href={"/notifications"}
       >
-        <div className="absolute -left-2 top-0 flex h-4 w-4 items-center justify-center rounded-full bg-destructive text-white shadow-md">
+        <div className="absolute -left-2 top-0 z-50 flex h-4 w-4 items-center justify-center rounded-full bg-destructive text-white shadow-md">
           <span className="text-sm font-light">{countReads}</span>
         </div>
         <EnvelopeClosedIcon className="h-4 w-4" />
@@ -52,7 +52,7 @@ function NotificationBubble({ session }: { session: Session }) {
         className="relative items-center gap-2 font-medium capitalize duration-300 hover:text-primary md:hidden"
         href={"/notifications"}
       >
-        <div className="absolute -left-2 top-0 flex h-5 w-5 items-center justify-center rounded-full bg-destructive text-white shadow-md">
+        <div className="absolute -left-2 top-0 z-50 flex h-5 w-5 items-center justify-center rounded-full bg-destructive text-white shadow-md">
           <span className="text-sm font-light">{countReads}</span>
         </div>
         <EnvelopeClosedIcon className="h-8 w-8" />

@@ -41,7 +41,13 @@ function Notification({
           </Button>
         </div>
 
-        <Link href={`/post/${notification?.post?.id}`}>
+        <Link
+          href={
+            notification.type === "follow"
+              ? `/user/${notification.actionUser.username}`
+              : `/post/${notification?.post?.id}`
+          }
+        >
           <p className="flex-1">{notification?.body}</p>
         </Link>
       </div>
