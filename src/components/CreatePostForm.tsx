@@ -64,7 +64,7 @@ export default function CreatePost() {
                 </FormItem>
               )}
             />
-            <div className="mt-2 flex gap-x-2">
+            <div className="mt-4 flex gap-x-2">
               <FormField
                 control={form.control}
                 name="image"
