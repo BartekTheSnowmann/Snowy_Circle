@@ -17,7 +17,7 @@ export async function DesktopNavlinks({ session }: Props) {
       {navLinks.map((navlink) => (
         <Link
           key={`navlink-${navlink.name}`}
-          className="flex items-center gap-2 font-medium capitalize duration-300 hover:text-primaryForeground"
+          className="flex items-center gap-2 font-medium capitalize duration-300 hover:text-primary"
           href={navlink.link}
         >
           <navlink.icon className="h-4 w-4" />
@@ -29,7 +29,7 @@ export async function DesktopNavlinks({ session }: Props) {
           {userLinks.map((userlink) => (
             <Link
               key={`userlink-${userlink.name}`}
-              className="flex items-center gap-2 font-medium capitalize duration-300 hover:text-primaryForeground"
+              className="flex items-center gap-2 font-medium capitalize duration-300 hover:text-primary"
               href={userlink.link}
             >
               <userlink.icon className="h-4 w-4" />
@@ -37,17 +37,20 @@ export async function DesktopNavlinks({ session }: Props) {
             </Link>
           ))}
           <NotificationIcon />
-
-          <SignOutBtn />
+          <div className="my-2">
+            <SignOutBtn />
+          </div>
         </>
       ) : (
-        authLinks.map((authlink) => (
-          <Button key={`authlink_btn-${authlink.name}`} asChild>
-            <Link key={`authlink-${authlink.name}`} href={authlink.link}>
-              {authlink.name}
-            </Link>
-          </Button>
-        ))
+        <div className="my-2 flex flex-col gap-2">
+          {authLinks.map((authlink) => (
+            <Button key={`authlink_btn-${authlink.name}`} asChild>
+              <Link key={`authlink-${authlink.name}`} href={authlink.link}>
+                {authlink.name}
+              </Link>
+            </Button>
+          ))}
+        </div>
       )}
     </ul>
   );
@@ -63,7 +66,7 @@ export async function MobileNavlinks({
       {navLinks.map((navlink) => (
         <Link
           key={`mobile_navlink-${navlink.name}`}
-          className="flex items-center gap-2 font-medium capitalize duration-300 hover:text-primaryForeground"
+          className="flex items-center gap-2 font-medium capitalize duration-300 hover:text-primary"
           href={navlink.link}
         >
           <navlink.icon className="h-8 w-8" />
@@ -75,7 +78,7 @@ export async function MobileNavlinks({
           {userLinks.map((userlink) => (
             <Link
               key={`mobile_userlink-${userlink.name}`}
-              className="flex items-center gap-2 font-medium capitalize duration-300 hover:text-primaryForeground"
+              className="flex items-center gap-2 font-medium capitalize duration-300 hover:text-primary"
               href={userlink.link}
             >
               <userlink.icon className="h-8 w-8" />

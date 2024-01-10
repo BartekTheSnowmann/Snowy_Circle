@@ -10,7 +10,7 @@ export default function Home({
 }) {
   return (
     <main className="w-full">
-      <div className="sticky top-0 z-50 flex h-20 items-center bg-background shadow-md">
+      <div className="sticky top-0 z-50 flex h-20 items-center border-b-2 border-muted bg-background">
         <div className="mx-auto flex w-fit">
           <Button
             asChild

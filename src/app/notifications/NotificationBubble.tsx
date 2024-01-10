@@ -38,7 +38,7 @@ function NotificationBubble({ session }: { session: Session }) {
     <>
       <Link
         key={`userlink-notifications`}
-        className="relative hidden items-center gap-2 font-medium capitalize duration-300 hover:text-primaryForeground md:flex"
+        className="relative hidden items-center gap-2 font-medium capitalize duration-300 hover:text-primary md:flex"
         href={"/notifications"}
       >
         <div className="absolute -left-2 top-0 flex h-4 w-4 items-center justify-center rounded-full bg-destructive text-white shadow-md">
@@ -49,7 +49,7 @@ function NotificationBubble({ session }: { session: Session }) {
       </Link>
       <Link
         key={`mobile_userlink-notifications`}
-        className="relative items-center gap-2 font-medium capitalize duration-300 hover:text-primaryForeground md:hidden"
+        className="relative items-center gap-2 font-medium capitalize duration-300 hover:text-primary md:hidden"
         href={"/notifications"}
       >
         <div className="absolute -left-2 top-0 flex h-5 w-5 items-center justify-center rounded-full bg-destructive text-white shadow-md">

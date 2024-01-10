@@ -3,7 +3,7 @@ import { getUserFeed } from "@/lib/actions/feed/actions";
 import { getServerSession } from "next-auth";
 import React from "react";
 import Post from "./Post";
-import NoSession from "./NoSession";
+import NoSession from "../idk/NoSession";
 import LoadMore from "../LoadMore";
 import NoMorePosts from "../idk/NoMorePosts";
 

@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/options";
 import Image from "next/image";
-import Logo1 from "@/../public/imgs/logo1_edited.png";
+import Logo1 from "@/../public/imgs/logo.png";
 import { DesktopNavlinks } from "./shared/NavLinks";
 import Link from "next/link";
 

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import UnlockImg from "@/../public/svgs/unlockImg.svg";
+import UnlockImg from "@/../public/svgs/undraw_unlock_img.svg";
 
 function NoSession() {
   return (
@@ -8,7 +8,7 @@ function NoSession() {
       <div className="text-center drop-shadow-md">
         <h4 className="mb-2 text-3xl font-bold">Unauthorized</h4>
         <p className="text-muted-foreground">
-          You must be logged in to access this feature!
+          In order to access this feature, you must be logged in!
         </p>
       </div>
 
