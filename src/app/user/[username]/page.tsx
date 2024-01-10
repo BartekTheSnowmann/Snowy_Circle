@@ -24,6 +24,7 @@ export async function generateMetadata({
   const { foundUser } = await getProfile(username);
 
   return {
+    title: foundUser?.username || "user",
     openGraph: {
       images: [foundUser?.image || placeholders.profilePicturePlaceholder],
     },

@@ -3,6 +3,19 @@ import Userslist from "./Userslist";
 import Postslist from "./PostsList";
 import { Skeleton } from "@/components/ui/skeleton";
 import SearchFor from "@/components/idk/SearchFor";
+import { Metadata } from "next";
+
+interface Props {
+  searchParams: {
+    q?: string;
+  };
+}
+
+export const generateMetadata = ({ searchParams: { q } }: Props): Metadata => {
+  return {
+    title: q ? `Results for ${q}` : "Search",
+  };
+};
 
 async function page({ searchParams: { q } }: { searchParams: { q: string } }) {
   if (!q) {

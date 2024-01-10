@@ -16,7 +16,10 @@ export const fontSans = FontSans({
 });
 
 export const metadata: Metadata = {
-  title: "Snowy Circle",
+  title: {
+    absolute: "Snowy",
+    template: "Snowy - %s",
+  },
   description: "Join the snowy community",
   metadataBase: new URL("https://socialmediaapp-bysnowmann.netlify.app/"),
 };

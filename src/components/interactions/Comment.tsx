@@ -6,13 +6,20 @@ import DateBadge from "../shared/DateBadge";
 import { useSession } from "next-auth/react";
 import DeletePostBtn from "./DeletePostBtn";
 import { CommentWithUser } from "@/lib/types";
+import { AnimatePresence, motion } from "framer-motion";
 
 function Comment({ comment }: { comment: CommentWithUser }) {
   const { data: session } = useSession();
   const canEdit = session?.user?.id == comment.user.id;
 
   return (
-    <div className="my-4 rounded-md bg-background p-4 shadow-md">
+    <motion.div
+      key={comment.id}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0, y: -10 }}
+      className="my-4 rounded-md bg-background p-4 shadow-md"
+    >
       <div className="flex items-start justify-between">
         <UserInfo
           username={comment.user.username}
@@ -29,7 +36,7 @@ function Comment({ comment }: { comment: CommentWithUser }) {
       </div>
 
       <div className="my-2">{comment.body}</div>
-    </div>
+    </motion.div>
   );
 }
 

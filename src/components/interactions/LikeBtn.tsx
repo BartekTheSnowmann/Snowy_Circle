@@ -4,8 +4,7 @@ import React, { useEffect, useState, useTransition } from "react";
 import { Button } from "../ui/button";
 import { likePost } from "@/lib/actions/interactions/actions";
 import { HeartFilledIcon, HeartIcon } from "@radix-ui/react-icons";
-import { toast } from "sonner";
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 interface Props {
   postId: string;

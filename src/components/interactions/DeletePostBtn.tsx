@@ -32,8 +32,8 @@ function DeletePostBtn({
         })
       }
       size={"icon"}
-      className="m-0 bg-destructive"
-      variant={"default"}
+      className="m-0"
+      variant={"destructive"}
     >
       <TrashIcon className="h-6 w-6 rounded-full text-white" />
     </Button>

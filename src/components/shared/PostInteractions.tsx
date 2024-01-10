@@ -10,6 +10,7 @@ import { hasUserLiked } from "@/lib/actions/interactions/actions";
 import Link from "next/link";
 import { Skeleton } from "../ui/skeleton";
 import { CommentWithUser } from "@/lib/types";
+import { AnimatePresence } from "framer-motion";
 
 interface Props {
   postId: string;
@@ -66,10 +67,12 @@ function PostInteractions({
 
       {showInteractions && (
         <div className="mt-4 border-t-2 border-muted">
-          {comments.length > 0 &&
-            comments.map((comment: CommentWithUser) => (
-              <Comment key={comment.id} comment={comment} />
-            ))}
+          <AnimatePresence>
+            {comments.length > 0 &&
+              comments.map((comment: CommentWithUser) => (
+                <Comment key={comment.id} comment={comment} />
+              ))}
+          </AnimatePresence>
           <CommentPost postId={postId} />
         </div>
       )}

@@ -10,6 +10,7 @@ import { useSession } from "next-auth/react";
 import { TPostWithComments } from "@/lib/types";
 import { Button } from "../ui/button";
 import { toast } from "sonner";
+import { DotsVerticalIcon } from "@radix-ui/react-icons";
 
 interface Props {
   post: TPostWithComments;
@@ -26,12 +27,13 @@ function Post({ post, image, username, showInteractions, canEdit }: Props) {
   return (
     <div className="m-4 mx-auto flex w-full flex-col rounded-md bg-primary-foreground p-4 shadow-md">
       <div>
-        <div className="flex items-center justify-between">
+        <div className="flex items-start justify-between">
           <UserInfo username={username} image={image} />
           <div className="flex flex-col items-end gap-2">
             <DateBadge createdAt={post.createdAt} />
             {canEdit && (
               <div>
+                {/* <DotsVerticalIcon className="h-6 w-6" /> */}
                 <DeletePostBtn postId={post.id} />
               </div>
             )}
