@@ -36,10 +36,10 @@ async function page({ params: { username } }: Props) {
     <section>
       <UserBanner isProfile={false} user={foundUser} />
 
-      <div className="mt-8 flex items-center justify-end px-4">
+      <div className="m-8 flex items-center justify-end">
         <Button asChild variant={"outline"} className="rounded-r-none">
           <Link
-            className="flex items-center gap-2 px-4"
+            className="flex items-center gap-2"
             href={`/user/${foundUser.username}/followings`}
           >
             <PersonIcon className="h-6 w-6" />
@@ -59,8 +59,8 @@ async function page({ params: { username } }: Props) {
         )}
       </div>
 
-      <div className="pt-4">
-        <h4 className="mx-8 font-semibold">Posts</h4>
+      <div>
+        <h4 className="mx-8 mt-8 font-semibold">Posts</h4>
         <UserPosts canEdit user={foundUser} />
       </div>
     </section>

@@ -19,7 +19,7 @@ async function UserPosts({ user, canEdit }: Props) {
 
   if (!postsData.posts.length) {
     return (
-      <p className="mx-8 pb-20 text-muted-foreground drop-shadow-md">
+      <p className="mx-8 mt-2 pb-20 text-muted-foreground drop-shadow-md">
         No posts yet!
       </p>
     );

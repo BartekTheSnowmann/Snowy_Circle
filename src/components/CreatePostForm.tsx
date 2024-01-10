@@ -42,7 +42,7 @@ export default function CreatePost() {
     <>
       <Form {...form}>
         <form
-          className="m-6 max-w-full flex-1"
+          className="m-8 max-w-full flex-1"
           onSubmit={form.handleSubmit(onSubmit)}
         >
           <div className="relative">

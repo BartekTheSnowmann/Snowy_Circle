@@ -48,7 +48,12 @@ function Notification({
               : `/post/${notification?.post?.id}`
           }
         >
-          <p className="flex-1">{notification?.body}</p>
+          <p className="flex-1">
+            <span className="mr-1 font-medium">
+              {notification.actionUser.username}
+            </span>
+            {notification?.body}
+          </p>
         </Link>
       </div>
     </div>

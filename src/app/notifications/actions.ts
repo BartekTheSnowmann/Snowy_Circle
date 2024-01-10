@@ -73,13 +73,13 @@ export async function createNotification(
 
     let message = "";
     if (notificationType === "comment") {
-      message = `${actionUser.username} commented on your post`;
+      message = `commented on your post`;
     }
     if (notificationType === "like") {
-      message = `${actionUser.username} liked your post`;
+      message = `liked your post`;
     }
     if (notificationType === "follow") {
-      message = `${actionUser.username} followed you`;
+      message = `followed you`;
     }
 
     const newNotification = await prisma.notification.create({

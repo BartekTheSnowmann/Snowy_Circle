@@ -10,10 +10,10 @@ async function page({
   const { usersData } = await getUserFollowings(username);
 
   return (
-    <section className="">
-      <div className="border-b-2 p-4">{username}</div>
+    <section>
+      <div className="border-y-2 border-muted p-4 font-medium">{username}</div>
 
-      <div className="p-4">
+      <div className="flex flex-col gap-4 p-4">
         {usersData?.map((user) => (
           <UserInfo
             key={`followings-${user.id}`}
