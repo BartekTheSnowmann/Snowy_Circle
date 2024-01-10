@@ -9,6 +9,8 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/options";
 import Link from "next/link";
 import { PersonIcon } from "@radix-ui/react-icons";
 import { Button } from "@/components/ui/button";
+import { Metadata } from "next";
+import { placeholders } from "../../../../constant/data";
 
 interface Props {
   params: {
@@ -16,7 +18,17 @@ interface Props {
   };
 }
 
-export const revalidate = 0;
+export async function generateMetadata({
+  params: { username },
+}: Props): Promise<Metadata> {
+  const { foundUser } = await getProfile(username);
+
+  return {
+    openGraph: {
+      images: [foundUser?.image || placeholders.profilePicturePlaceholder],
+    },
+  };
+}
 
 async function page({ params: { username } }: Props) {
   const { foundUser } = await getProfile(username);
