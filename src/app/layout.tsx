@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     template: "Snowy - %s",
   },
   description: "Join the snowy community",
-  metadataBase: new URL("https://socialmediaapp-bysnowmann.netlify.app/"),
+  metadataBase: new URL("https://snowycircle-bysnowmann.vercel.app/"),
 };
 
 export default function RootLayout({
