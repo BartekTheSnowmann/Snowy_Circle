@@ -7,7 +7,7 @@ import { useInView } from "react-intersection-observer";
 import Post from "./shared/Post";
 import { getUserPosts } from "@/app/user/[username]/actions";
 import { ReloadIcon } from "@radix-ui/react-icons";
-import NoMorePosts from "./idk/NoMorePosts";
+import NoMorePosts from "./other/NoMorePosts";
 
 let page = 2;
 

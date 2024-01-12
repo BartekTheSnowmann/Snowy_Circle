@@ -2,7 +2,7 @@ import React, { Suspense } from "react";
 import Userslist from "./Userslist";
 import Postslist from "./PostsList";
 import { Skeleton } from "@/components/ui/skeleton";
-import SearchFor from "@/components/idk/SearchFor";
+import SearchFor from "@/components/other/SearchFor";
 import { Metadata } from "next";
 
 interface Props {

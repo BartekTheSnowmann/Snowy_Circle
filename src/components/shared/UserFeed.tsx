@@ -3,9 +3,9 @@ import { getUserFeed } from "@/lib/actions/feed/actions";
 import { getServerSession } from "next-auth";
 import React from "react";
 import Post from "./Post";
-import NoSession from "../idk/NoSession";
+import NoSession from "../other/NoSession";
 import LoadMore from "../LoadMore";
-import NoMorePosts from "../idk/NoMorePosts";
+import NoMorePosts from "../other/NoMorePosts";
 
 async function UserFeed() {
   let perPage = 12;

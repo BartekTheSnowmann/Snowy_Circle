@@ -29,7 +29,7 @@ function NotificationBubble({ session }: { session: Session }) {
 
     const interval = setInterval(() => {
       fetchNotifications();
-    }, 3000);
+    }, 300000);
 
     return () => clearInterval(interval);
   }, [session.user.id]);
